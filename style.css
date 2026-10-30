@@ -1,0 +1,453 @@
+
+/* ===== 1. Pengaturan dasar ===== */
+:root {
+  --pink: #ff6b9d;
+  --pink-light: #ffb4d0;
+  --gold: #f6d99b;
+  --purple: #190c2e;
+  --glass: rgba(255, 255, 255, 0.055);
+  --border: rgba(255, 107, 157, 0.27);
+  --text: #fff1f7;
+  --muted: #d6c3df;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+  color: var(--text);
+  line-height: 1.85;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse at 15% 10%, #51205e 0%, transparent 35%),
+    radial-gradient(ellipse at 85% 40%, #48163f 0%, transparent 32%),
+    radial-gradient(ellipse at 40% 85%, #35134d 0%, transparent 40%),
+    linear-gradient(160deg, #190c2e, #261036 50%, #160b28);
+  background-attachment: fixed;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--pink);
+  color: white;
+}
+
+/* ===== 2. Hati melayang ===== */
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floating-hearts span {
+  position: absolute;
+  bottom: -50px;
+  color: rgba(255, 107, 157, 0.22);
+  font-size: clamp(14px, 2vw, 25px);
+  animation: floatUp linear infinite;
+}
+
+.floating-hearts span:nth-child(1) {
+  left: 8%;
+  animation-duration: 17s;
+  animation-delay: -3s;
+}
+
+.floating-hearts span:nth-child(2) {
+  left: 22%;
+  animation-duration: 22s;
+  animation-delay: -12s;
+}
+
+.floating-hearts span:nth-child(3) {
+  left: 39%;
+  animation-duration: 19s;
+  animation-delay: -6s;
+}
+
+.floating-hearts span:nth-child(4) {
+  left: 57%;
+  animation-duration: 24s;
+  animation-delay: -15s;
+}
+
+.floating-hearts span:nth-child(5) {
+  left: 73%;
+  animation-duration: 18s;
+  animation-delay: -8s;
+}
+
+.floating-hearts span:nth-child(6) {
+  left: 89%;
+  animation-duration: 21s;
+  animation-delay: -11s;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+/* ===== 3. Hero ===== */
+.hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 35px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content {
+  max-width: 850px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  animation: fadeUp 1s both;
+}
+
+.hero h1 {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(4.5rem, 15vw, 9rem);
+  line-height: 1.3;
+  font-weight: 400;
+  margin: 8px 0;
+  color: var(--pink-light);
+  text-shadow: 0 0 45px rgba(255, 107, 157, 0.25);
+  animation: fadeUp 1.2s 0.2s both;
+}
+
+.hero-description {
+  color: var(--muted);
+  font-size: clamp(0.9rem, 2.5vw, 1.08rem);
+  animation: fadeUp 1.2s 0.45s both;
+}
+
+.hero-heart {
+  color: var(--pink);
+  font-size: 2rem;
+  display: inline-block;
+  margin-top: 22px;
+  animation: heartbeat 1.3s infinite, fadeUp 1s 0.65s both;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  animation: bob 1.8s ease-in-out infinite;
+}
+
+.scroll-hint span {
+  color: var(--pink);
+  font-size: 1.25rem;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.2); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.15); }
+  60% { transform: scale(1); }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(9px); }
+}
+
+/* ===== 4. Konten utama ===== */
+main {
+  width: min(100% - 36px, 760px);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 30px;
+}
+
+.section-label {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--gold);
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+/* ===== 5. Kartu glassmorphism ===== */
+.card {
+  padding: clamp(24px, 6vw, 42px);
+  margin: 0 auto 28px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 25px;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 12px 45px rgba(0, 0, 0, 0.12);
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 107, 157, 0.6);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+  color: var(--pink-light);
+  font-size: clamp(1.35rem, 4vw, 1.8rem);
+  line-height: 1.5;
+  margin-bottom: 18px;
+  font-weight: 700;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 0.96rem;
+  margin-bottom: 13px;
+}
+
+.card p:last-child {
+  margin-bottom: 0;
+}
+
+.highlight {
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.small-heart {
+  color: var(--pink);
+  margin-right: 7px;
+}
+
+/* ===== 6. Kartu kenangan Free Fire ===== */
+.memory-card {
+  border-color: rgba(246, 217, 155, 0.55);
+  background:
+    linear-gradient(140deg, rgba(246, 217, 155, 0.07), transparent 60%),
+    var(--glass);
+}
+
+.memory-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 18px 48px rgba(246, 217, 155, 0.08);
+}
+
+.level-badge {
+  display: inline-block;
+  color: var(--gold);
+  border: 1px solid rgba(246, 217, 155, 0.45);
+  border-radius: 50px;
+  padding: 5px 14px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  margin-bottom: 22px;
+  background: rgba(246, 217, 155, 0.07);
+}
+
+.game-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.memory-card h2 {
+  color: var(--gold);
+}
+
+.players {
+  border-top: 1px solid rgba(246, 217, 155, 0.25);
+  padding-top: 19px;
+  margin-top: 25px;
+  text-align: center;
+  font-size: clamp(0.76rem, 3vw, 0.95rem);
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* ===== 7. Lima alasan ===== */
+.reasons {
+  list-style: none;
+  display: grid;
+  gap: 17px;
+  margin-top: 12px;
+}
+
+.reasons li {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.reasons .heart-icon {
+  color: var(--pink);
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* ===== 8. Pengakuan jujur ===== */
+.honesty-card {
+  border-left: 3px solid var(--pink);
+}
+
+.honesty-card blockquote {
+  color: #fff1f7;
+  font-size: clamp(1rem, 3vw, 1.12rem);
+  font-weight: 600;
+  line-height: 2;
+}
+
+/* ===== 9. Janji ===== */
+.promise-card {
+  text-align: center;
+}
+
+.promise-symbol {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+/* ===== 10. Kutipan penutup ===== */
+.closing {
+  text-align: center;
+  padding: clamp(55px, 12vw, 100px) 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.closing .quote-mark {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(3.4rem, 10vw, 5.8rem);
+  line-height: 1.4;
+  color: var(--pink-light);
+  text-shadow: 0 0 35px rgba(255, 107, 157, 0.2);
+}
+
+.closing .sub-quote {
+  max-width: 500px;
+  margin: 16px auto 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ===== 11. Footer dan tanda tangan ===== */
+footer {
+  text-align: center;
+  padding: 28px 20px 55px;
+  position: relative;
+  z-index: 1;
+  color: var(--muted);
+  font-size: 0.87rem;
+}
+
+.signature {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2.8rem, 8vw, 4.1rem);
+  color: var(--pink-light);
+  line-height: 1.5;
+  margin-top: 5px;
+}
+
+.footer-heart {
+  color: var(--pink);
+  display: inline-block;
+  font-size: 1.35rem;
+  animation: heartbeat 1.3s infinite;
+  margin-top: 6px;
+}
+
+.footer-note {
+  margin-top: 24px;
+  font-size: 0.7rem;
+  opacity: 0.65;
+}
+
+/* ===== 12. Tampilan HP ===== */
+@media (max-width: 480px) {
+  main {
+    width: min(100% - 26px, 760px);
+  }
+
+  .card {
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .eyebrow {
+    letter-spacing: 3px;
+  }
+
+  .scroll-hint {
+    bottom: 20px;
+  }
+}
+
+/* Mengurangi animasi sesuai preferensi perangkat */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
